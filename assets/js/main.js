@@ -1,12 +1,12 @@
-/**********************************************************************************************************
- * 解答入力欄のコンポーネントです。入力欄・送信ボタン・エラーメッセージを表示します。
- * <answer-input v-bind:correct="解答" v-on:answer-input="answerInput(event, stage, number, final)"></answer-input>
- * 解答：correctAnswer['stage1']['q1']
- * answerInput(event, stage, number, final)：
- *          event ：$event
- *          stage ：STAGE名 'stage1'
- *          number：問題番号（数字） 1
- *          final ：最終ステージの場合 'final'
+**********************************************************************************************************
+  解答入力欄のコンポーネントです。入力欄・送信ボタン・エラーメッセージを表示します。
+  <answer-input v-bind:correct="解答" v-on:answer-input="answerInput(event, stage, number, final)"></answer-input>
+  解答：correctAnswer['stage1']['q1']
+  answerInput(event, stage, number, final)：
+           event ：$event
+           stage ：STAGE名 'stage1'
+           number：問題番号（数字） 1
+           final ：最終ステージの場合 'final'
  *********************************************************************************************************/
 const app = Vue.createApp({
   data() {
