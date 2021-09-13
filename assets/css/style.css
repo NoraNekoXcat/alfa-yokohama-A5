@@ -15,9 +15,7 @@ html {
           box-sizing: border-box;
 }
 
-a {
-   color:  #fff;
-}
+
 
 body {
   overflow-x: hidden;
@@ -461,6 +459,10 @@ hight: 90%;
   text-align: center;
   display: block;
   margin-top: 20px;
+}
+
+a {
+  color:  #fff;
 }
 
 .clear-message {
