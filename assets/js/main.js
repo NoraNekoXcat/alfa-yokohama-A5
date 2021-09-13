@@ -67,18 +67,25 @@ const app = Vue.createApp({
       },
     }
   },
-
-  methods: {   
+  methods: {
+    /* 「送信」ボタンをクリックした場合の動作です。 */
     answerInput(event, stage, number, final) {
+      /* answerをtrueまたはfalseにします。 */
       this.answer[stage][number-1] = event;
+      /* STAGEのすべての問題がtrueか調べてclearの値を変更します。*/
       const result = this.answer[stage].every((element) => {
         return element;
       });
       this.clear[stage] = result;
+      /* 最終ステージの入力を判定します。 */
       if ( this.clear[stage] === true && final === 'final' ) {
         window.location.href = 'final.html';
       }
     },
+    /* クリア画面「次のステージへ」ボタンをクリックした時の動作を設定します
+    *  clearをfalseにしてクリア画面を非表示にします。
+    *  nextをtrueにして次のステージを表示します。
+    */
     nextStage(stage) {
       this.clear[stage] = false;
       this.next[stage] = true;
@@ -86,17 +93,19 @@ const app = Vue.createApp({
   }
 })
 
+/* 解答入力欄のコンポーネント */
 app.component('answer-input', {
   props: ['correct'],
   data: function () {
     return {
+      /* 送信ボタン上下に表示されるメッセージ */
       okMessage: '正解！',
-      ngMessage: '不正解...諦めずにもう一度挑戦しよう',
+      ngMessage: 'そのキーワードは違うようだぞ！？',
       message: '',
       inputAnswer: '',
     }
   },
-  template: 
+  template: `
     <div class="answer__container">
       <div class="answer">
         <input type="text" v-model="inputAnswer" placeholder="ここに答えを入力しよう">
@@ -104,7 +113,7 @@ app.component('answer-input', {
       <p v-if="message === ngMessage" class="err-message">{{ message }}</p>
       <button v-on:click="judgement(inputAnswer)">送信</button>
       <p v-if="message === okMessage" class="err-message">{{ message }}</p>
-    </div>,
+    </div>`,
   methods: {
     judgement(answer) {
       if(answer === this.correct) { // 入力値が解答と一致する場合
