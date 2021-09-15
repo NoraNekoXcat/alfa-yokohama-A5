@@ -8,6 +8,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+/****************************
+ * 書き加え分のコードです
+*****************************/
+.titleimg {
+ margin:  auto;
+}
 
 html {
   font-size: 18px;
